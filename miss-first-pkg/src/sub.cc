@@ -9,7 +9,7 @@ class Sub : public rclcpp::Node {
  public:
   Sub() : Node("sub") {
     subscribtion_ = this->create_subscription<std_msgs::msg::Bool>(
-        "test", 10, std::bind(&Sub::topic_callback, this, _1));
+        "/test", 10, std::bind(&Sub::topic_callback, this, _1));
   }
   ~Sub() = default;
 
