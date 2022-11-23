@@ -23,7 +23,7 @@ find_package(ament_cmake REQUIRED)
 find_package(external-lib REQUIRED)
 
 add_executable(${PROJECT_NAME} src/exec.cc)
-ament_target_dependencies(${PROJECT_NAME} external-lib)
+target_link_libraries(${PROJECT_NAME} PUBLIC external-lib::external-lib)
 
 install(TARGETS
   ${PROJECT_NAME}

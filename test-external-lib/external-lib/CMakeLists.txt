@@ -30,16 +30,16 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cli)
 
-add_library(${PROJECT_NAME} STATIC src/my-lib.cc)
+add_library(${PROJECT_NAME} SHARED src/my-lib.cc)
+
 target_include_directories(${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
     $<INSTALL_INTERFACE:include>)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE cli::cli rclcpp::rclcpp)
-# ament_target_dependencies(${PROJECT_NAME} cli rclcpp)
 
-ament_export_targets(${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_targets(${PROJECT_NAME}Targets HAS_LIBRARY_TARGET)
 ament_export_dependencies(rclcpp)
 
 
@@ -50,7 +50,10 @@ install(
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}
+  EXPORT ${PROJECT_NAME}Targets
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
   INCLUDES DESTINATION include
 )
 

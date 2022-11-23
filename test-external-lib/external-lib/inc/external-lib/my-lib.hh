@@ -1,6 +1,8 @@
 #ifndef MY_LIB_HH
 #define MY_LIB_HH
 
+#include "rclcpp/rclcpp.hpp"
+
 class Consol {
  public:
   Consol() = default;

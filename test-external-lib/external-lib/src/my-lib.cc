@@ -1,7 +1,5 @@
 #include "external-lib/my-lib.hh"
 
-#include "rclcpp/rclcpp.hpp"
-
 #include "cli/cli.h"
 #include "cli/clifilesession.h"
 
